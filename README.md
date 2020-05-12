@@ -21,6 +21,8 @@
 
 * ### **프로젝트 실행방법**
 
+* npm install concurrently 명령어를 실행한 후 dev 사용이 가능합니다.
+
   ```
   npm run dev
   ```
