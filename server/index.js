@@ -8,7 +8,7 @@ const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const config = require('./config/key')
 
-// application/x-www-form-urlencoded 라고 된 데이터를 분석해서 가져올 수 있게 한다.
+// application/x-www-form-urlencoded 라고 된 데이터를 분석해서 가져올 수 있게 한다!
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // application/json type의 데이터를 분석해서 가져올 수 있게 한다.
