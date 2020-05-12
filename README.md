@@ -39,7 +39,7 @@
   * 단, client 디렉토리와 server 디렉토리 각각에서 아래 명령어를 실행해야 합니다.
 
   ```
-  npm run install
+  npm install
   ```
 
 
