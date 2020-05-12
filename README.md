@@ -21,10 +21,12 @@
 
 * ### **프로젝트 실행방법**
 
+  *  npm install concurrently 명령어를 실행한 후 dev 사용이 가능합니다.
+  
   ```
-  npm run dev
+npm run dev
   ```
-
+  
   서버와 프론트엔드를 동시에 여는 명령어입니다.
 
 ------
@@ -40,7 +42,6 @@
   npm run install
   ```
 
-  
 
 ------
 
