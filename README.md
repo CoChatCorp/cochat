@@ -1,7 +1,7 @@
 # 웹 기반 협업 메신저 프로그램 COCHAT
 
 
-![](https://i.imgur.com/2DflfFB.png)
+![](https://i.imgur.com/2DflfFB.png) {:.aligncenter}
 
 
 
