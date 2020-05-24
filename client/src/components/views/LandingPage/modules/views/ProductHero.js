@@ -7,7 +7,7 @@ import ProductHeroLayout from './ProductHeroLayout';
 
 //const backgroundImage =
  // 'https://images.unsplash.com/photo-1534854638093-bada1813ca19?auto=format&fit=crop&w=1400&q=80';
-const backgroundImage = "";
+const backgroundImage = "https://i.imgur.com/0dqdq3m.jpg";
 
 const styles = (theme) => ({
   background: {
@@ -16,6 +16,7 @@ const styles = (theme) => ({
     backgroundPosition: 'center',
   },
   button: {
+    backgroundColor: '#039BF1',
     minWidth: 200,
   },
   h5: {
@@ -37,7 +38,7 @@ function ProductHero(props) {
     <ProductHeroLayout backgroundClassName={classes.background}>
       {/* Increase the network loading priority of the background image. */}
       <img style={{ display: 'none' }} src={backgroundImage} alt="increase priority" />
-      <Typography color="inherit" align="center" variant="h2" marked="center">
+      <Typography color="inherit" align="center" variant="h1" marked="center">
        새로운 코딩 경험의 시작
       </Typography>
       <Typography color="inherit" align="center" variant="h5" className={classes.h5}>

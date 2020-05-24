@@ -36,8 +36,8 @@ const styles = (theme) => ({
   },
   media: {
     marginTop:30,
-    width: 160,
-    height: 43,
+    width: 130,
+    height: 35,
     marginBottom: 30,
   },
 });
