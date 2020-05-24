@@ -4,9 +4,8 @@ import { useDispatch } from 'react-redux';
 import { registerUser } from '../../../_actions/user_action';
 import { withRouter } from 'react-router-dom'
 
-import withRoot from '../LandingPage/modules/withRoot';
-
-import AppAppBar from '../LandingPage/modules/views/AppAppBar';
+import withRoot from '../modules/withRoot';
+import AppAppBar from '../modules/views/AppAppBar';
 
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -50,6 +49,10 @@ const useStyles = makeStyles((theme) => ({
     submit: {
       margin: theme.spacing(3, 0, 2),
     },
+    textfield:{
+      marginBottom:10,
+    }
+
   }));
 
 const validatePassword = passwordEntered => {
@@ -137,15 +140,16 @@ function RegisterPage(props) {
                   image="/login_logo.png"
                   title="CODECHAT"
                 />
-                <Typography component="h1" variant="h5">
-                  
+                <Typography component="h2" variant="h6">
+                  COCHAT에서 새로운 코딩 스터디를 경험하세요
                 </Typography>
                 <form className={classes.form} noValidate onSubmit={onSubmitHandler}>
                     <Grid item xs={12}>
                       <TextField
+                       className={classes.textfield}
                         autoComplete="fname"
                         name="firstName"
-                        variant="filled"
+                        variant="outlined"
                         value={Name}
                         onChange={onNameHandler}
                         required
@@ -157,7 +161,8 @@ function RegisterPage(props) {
                     </Grid>
                     <Grid item xs={12}>
                       <TextField
-                         variant="filled"
+                      className={classes.textfield}
+                        variant="outlined"
                         required
                         fullWidth
                         value={Email}
@@ -170,7 +175,8 @@ function RegisterPage(props) {
                     </Grid>
                     <Grid item xs={12}>
                       <TextField
-                        variant="filled"
+                      className={classes.textfield}
+                        variant="outlined"
                         required
                         fullWidth
                         value={Password}
@@ -185,7 +191,8 @@ function RegisterPage(props) {
                     </Grid>
                     <Grid item xs={12}>
                       <TextField
-                        variant="filled"
+                      className={classes.textfield}
+                        variant="outlined"
                         required
                         fullWidth
                         value={confirmPassword}

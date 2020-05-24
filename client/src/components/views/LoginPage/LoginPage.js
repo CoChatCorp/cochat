@@ -7,14 +7,45 @@ import ReactDOM from 'react-dom';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
+import Link from '@material-ui/core/Link';
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+import Container from '@material-ui/core/Container';
+import CardMedia from '@material-ui/core/CardMedia';
+import Typography from '@material-ui/core/Typography';
+import withRoot from '../modules/withRoot';
+import AppAppBar from '../modules/views/AppAppBar';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-
-        margin: theme.spacing(1),
-        width: '500',
-
+    root:{
     },
+    paper: {
+      marginTop: theme.spacing(8),
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
+    media: {
+      marginTop:50,
+      width: 300,
+      height: 85,
+      marginBottom: 30,
+    },
+    avatar: {
+      margin: theme.spacing(1),
+      //backgroundColor: theme.palette.secondary.main,
+    },
+    form: {
+      width: '100%', // Fix IE 11 issue.
+      margin: theme.spacing(3),
+    },
+    submit: {
+      margin: theme.spacing(3, 0, 2),
+    },
+    textfield:{
+      marginBottom:10,
+    }
 }));
 
 function LoginPage(props) {
@@ -57,7 +88,79 @@ function LoginPage(props) {
 
     const classes = useStyles();
     return (
+    <React.Fragment>
+      <AppAppBar />
+            <Container component="main" maxWidth="xs" className={classes.root}>
+              <CssBaseline />
+              <div className={classes.paper}>
+                
+                <CardMedia
+                className={classes.media}
+                  image="/login_logo.png"
+                  title="CODECHAT"
+                />
+                <Typography component="h2" variant="h6">
+                  COCHAT에 로그인하여 코딩 스터디를 시작해 보세요
+                </Typography>
+                <form className={classes.form} noValidate onSubmit={onSubmitHandler}>
+                    <Grid item xs={12}>
+                      <TextField
+                       className={classes.textfield}
+                        autoComplete="email"
+                        name="email"
+                        variant="outlined"
+                        required
+                        fullWidth
+                        id="email"
+                        label="이메일"
+                        value={Email}
+                        onChange={onEmailHandler}
+                        autoFocus
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <TextField
+                      className={classes.textfield}
+                        variant="outlined"
+                        required
+                        fullWidth
+                        value={Password}
+                        onChange={onPasswordHandler}
+                        id="password"
+                        label="비밀번호"
+                        name="password"
+                        autoComplete="password"
+                      />
+                    </Grid>
+                  <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    onSubmit={onSubmitHandler}
+                    color="primary"
+                    className={classes.submit}
+                  >
+                    로그인
+                  </Button>
+                  <Grid container justify="flex-end">
+                    <Grid item>
+                      <Link href="/register" variant="body2">
+                        아직 회원이 아니라면, 회원가입을 해 주세요!
+                      </Link>
+                    </Grid>
+                  </Grid>
+                </form>
+              </div>
+              <Box mt={5}>
+                
+              </Box>
+            </Container>
+            </React.Fragment>
 
+
+
+
+/*
         <div style={{
             display: 'flex', justifyContent: 'center', alignItems: 'center',
             width: '400', height: '100vh'
@@ -75,8 +178,8 @@ function LoginPage(props) {
                 </Button>
             </form>
 
-        </div>
-    );
+        </div>*/
+    )
 }
 
-export default withRouter(LoginPage);
+export default withRoot(LoginPage);

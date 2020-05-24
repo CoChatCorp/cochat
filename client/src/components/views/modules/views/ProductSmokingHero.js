@@ -35,7 +35,7 @@ function ProductSmokingHero(props) {
     <Container className={classes.root} component="section">
       <Button className={classes.button}>
         <Typography variant="h4" component="span">
-          Got any questions? Need help?
+          도움이 필요하신가요?
         </Typography>
       </Button>
       <Typography variant="subtitle1" className={classes.link}>

@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '../components/Button';
 import Typography from '../components/Typography';
 import ProductHeroLayout from './ProductHeroLayout';
+import Fade from '@material-ui/core/Fade';
 
 //const backgroundImage =
  // 'https://images.unsplash.com/photo-1534854638093-bada1813ca19?auto=format&fit=crop&w=1400&q=80';
@@ -38,12 +39,23 @@ function ProductHero(props) {
     <ProductHeroLayout backgroundClassName={classes.background}>
       {/* Increase the network loading priority of the background image. */}
       <img style={{ display: 'none' }} src={backgroundImage} alt="increase priority" />
+      <Fade
+        in={true}
+        timeout={{enter:1000}}
+        >
       <Typography color="inherit" align="center" variant="h1" marked="center">
        새로운 코딩 경험의 시작
       </Typography>
+      </Fade>
+      <Fade
+        in={true}
+        timeout={{enter:1500}}
+        >
       <Typography color="inherit" align="center" variant="h5" className={classes.h5}>
         코딩테스트 스터디 채널을 쉽게 찾고, 가입하세요.
       </Typography>
+      </Fade>
+      <Fade in={true} timeout={{enter:1500}}>
       <Button
         color="primary"
         variant="contained"
@@ -54,9 +66,12 @@ function ProductHero(props) {
       >
         Register
       </Button>
+      </Fade>
+      <Fade in={true} timeout={{enter:1500}}>
       <Typography variant="body2" color="inherit" className={classes.more}>
         Discover your coding experience
       </Typography>
+      </Fade>
     </ProductHeroLayout>
   );
 }

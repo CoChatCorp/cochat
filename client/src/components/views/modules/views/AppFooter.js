@@ -5,13 +5,14 @@ import Link from '@material-ui/core/Link';
 import Container from '@material-ui/core/Container';
 import Typography from '../components/Typography';
 import TextField from '../components/TextField';
+import GitHubIcon from '@material-ui/icons/GitHub';
 
 function Copyright() {
   return (
     <React.Fragment>
       {'© '}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+        COCHAT corp
       </Link>{' '}
       {new Date().getFullYear()}
     </React.Fragment>
@@ -40,10 +41,10 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: theme.palette.warning.main,
+    backgroundColor: theme.palette.primary.main,
     marginRight: theme.spacing(1),
     '&:hover': {
-      backgroundColor: theme.palette.warning.dark,
+      backgroundColor: theme.palette.primary.dark,
     },
   },
   list: {
@@ -88,12 +89,11 @@ export default function AppFooter() {
               spacing={2}
             >
               <Grid item className={classes.icons}>
-                <a href="https://material-ui.com/" className={classes.icon}>
-                  <img src="/static/themes/onepirate/appFooterFacebook.png" alt="Facebook" />
-                </a>
-                <a href="https://twitter.com/MaterialUI" className={classes.icon}>
-                  <img src="/static/themes/onepirate/appFooterTwitter.png" alt="Twitter" />
-                </a>
+              <Link
+                href="https://github.com/CoChatCorp"
+              >
+                  <GitHubIcon/>
+              </Link>
               </Grid>
               <Grid item>
                 <Copyright />
