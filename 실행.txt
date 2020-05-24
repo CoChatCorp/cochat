@@ -1,0 +1,2 @@
+npm run build (react build)
+node chat-server.js (서버 실행)
