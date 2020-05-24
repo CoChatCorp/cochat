@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 
 function App(){
 
-    const classes = useStyles(); // ì„ì˜ë¡œ ì§€ì •í•œ style ê°€ì ¸ì˜¤ê¸°
+    const classes = useStyles(); // ?„?˜ë¡? ì§?? •?•œ style ê°?? ¸?˜¤ê¸?
     return (
         <Router>
             <div style={{display:'flex'}}>

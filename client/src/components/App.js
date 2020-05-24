@@ -3,6 +3,7 @@ import '../App.css';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
 import LandingPage from './views/LandingPage/LandingPage';
+import HomePage from './views/LandingPage/Home';
 import LoginPage from './views/LoginPage/LoginPage';
 import RegisterPage from './views/RegisterPage/RegisterPage';
 import ChatPage from './views/ChatPage/ChatPage';
@@ -15,7 +16,7 @@ function App() {
     <Router>
     <div>
       <Switch>
-        <Route exact path="/" component={Auth(LandingPage, null)} />
+        <Route exact path="/" component={Auth(HomePage, null)} />
         <Route exact path="/login" component={Auth(LoginPage, false)} />
         <Route exact path="/register" component={Auth(RegisterPage, false)} />
         <Route exact path="/main" component={Auth(mainPage, true)} />

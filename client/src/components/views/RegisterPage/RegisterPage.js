@@ -1,7 +1,12 @@
+
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../../../_actions/user_action';
 import { withRouter } from 'react-router-dom'
+
+import withRoot from '../LandingPage/modules/withRoot';
+
+import AppAppBar from '../LandingPage/modules/views/AppAppBar';
 
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -121,6 +126,8 @@ function RegisterPage(props) {
     const classes = useStyles();
 
     return (
+      <React.Fragment>
+      <AppAppBar />
             <Container component="main" maxWidth="xs" className={classes.root}>
               <CssBaseline />
               <div className={classes.paper}>
@@ -217,7 +224,8 @@ function RegisterPage(props) {
                 
               </Box>
             </Container>
+            </React.Fragment>
     )
 }
 
-export default withRouter(RegisterPage);
+export default withRoot(RegisterPage);
