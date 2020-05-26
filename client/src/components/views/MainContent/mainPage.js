@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import { makeStyles } from "@material-ui/core/styles"
 import { Link as RouterLink } from 'react-router-dom';
 
-import ChatPage from '../../views/ChatPage/ChatPage';
+import SideBar from './SideBar/SideBar';
 
 import { BrowserRouter as Router,
     Switch, Route, Link} from "react-router-dom"
@@ -21,54 +21,14 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.primary}
 }))
 
-function App(){
-
-    const classes = useStyles(); // ?ûÑ?ùòÎ°? Ïß??†ï?ïú style Í∞??†∏?ò§Í∏?
-    return (
-        <Router>
-            <div style={{display:'flex'}}>
-                <Drawer
-                
-                    style={{width: '240px'}}
-                    variant="persistent"
-                    anchor="left"
-                    variant="permanent"
-                    open={true}
-                    classes={{paper: classes.drawerPaper}}
-                >
-                    
-                    <List>
-                        <Link to="/chat" className={classes.link}>
-                        <ListItem button>
-                            <ListItemIcon>
-                                <HomeIcon/>
-                            </ListItemIcon>
-                            <ListItemText primary={"Chat"}/>
-                        </ListItem>
-                        </Link>
-
-                        <Link to="/about" className={classes.link}>
-                        <ListItem button>
-                            <ListItemIcon>
-                                <InfoIcon/>
-                            </ListItemIcon>
-                            <ListItemText primary={"About"}/>
-                        </ListItem>
-                        </Link>
-                    </List>
-                </Drawer>
-                
-
-                <Switch>
-                    <Route exact path="/chat" component={ChatPage}>
-                    </Route>
-                    <Route exact path="/about">
-                            About
-                    </Route>
-                </Switch>
-            </div>
-        </Router>
+function mainPage(){
+    return(
+        <div>
+        <Suspense fallback={(<div>Loading...</div>)}>
+            <SideBar/>
+        </Suspense>
+        </div>
     );
 }
 
-export default App;
+export default mainPage;
