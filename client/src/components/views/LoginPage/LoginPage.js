@@ -76,7 +76,7 @@ function LoginPage(props) {
         dispatch(loginUser(body))
             .then(response => {
                 if (response.payload.loginSuccess) {
-                    props.history.push('/') // react 에서의 페이지 이동 코드
+                    props.history.push('/main') // react 에서의 페이지 이동 코드
                 } else {
                     alert('이메일 혹은 비밀번호를 다시 확인해 주세요.');
                 }
@@ -182,4 +182,4 @@ function LoginPage(props) {
     )
 }
 
-export default withRoot(LoginPage);
+export default withRouter(withRoot(LoginPage));

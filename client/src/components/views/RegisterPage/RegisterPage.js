@@ -118,7 +118,7 @@ function RegisterPage(props) {
             .then(response =>{
                 if(response.payload.success){
                     alert('회원가입이 완료되었습니다!');
-                    props.history.push('/login') // react 에서의 페이지 이동 코드
+                    props.history.push('/main') // react 에서의 페이지 이동 코드
                 } else{
                     alert('Error!!');
                 }
@@ -235,4 +235,4 @@ function RegisterPage(props) {
     )
 }
 
-export default withRoot(RegisterPage);
+export default withRouter((withRoot(RegisterPage)));
