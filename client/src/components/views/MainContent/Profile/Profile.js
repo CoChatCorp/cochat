@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import { Avatar, Typography } from '@material-ui/core';
 
+import { useSelector } from 'react-redux'
+
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
@@ -23,17 +25,23 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Profile = props => {
+
+// 리덕스에서 데이터 조회하기
+
+function Profile(props) {
   const { className, ...rest } = props;
-
   const classes = useStyles();
-
-  const user = {
-    name: '석찬희',
+  const profiles = {
     avatar: '/images/avatars/avatar_11.png',
     bio: 'Member',
     channel: '가입한 채널 : 3개'
   };
+  
+  
+  const user = useSelector(state => state.user);
+  const test = user.userData;
+  var parsedList = JSON.stringify(test,["name"])
+  var parsing = String(parsedList).slice(0,-2).substr(9)
 
   return (
     <div
@@ -44,24 +52,20 @@ const Profile = props => {
         alt="Person"
         className={classes.avatar}
         component={RouterLink}
-        src={user.avatar}
+        src={profiles.avatar}
         to="/settings"
       />
       <Typography
-        className={classes.name}
         variant="h4"
+        className={classes.name}
       >
-        {user.name}
+        {parsing}
       </Typography>
       <Typography>회원님</Typography>
       <br/>
-      <Typography variant="body1">{user.channel}</Typography>
+      <Typography variant="body1">{profiles.channel}</Typography>
     </div>
   );
-};
-
-Profile.propTypes = {
-  className: PropTypes.string
 };
 
 export default Profile;

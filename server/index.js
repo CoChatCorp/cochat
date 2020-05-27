@@ -107,4 +107,26 @@ app.get('/api/users/logout', auth, (req, res) => {
         });
 });
 
+// 채팅 서버
+const server = require('http').createServer(app)
+const portNo = 3001
+server.listen(portNo, () => {
+    console.log('채팅 서버 실행 완료:', 'http://localhost:' + portNo)
+})
+
+// 웹 소켓 서버 실행
+const socketio = require('socket.io')
+const io = socketio.listen(server)
+// 클라이언트가 접속했을 때의 이벤트 설정 --- (※4)
+io.on('connection', (socket) => {
+    console.log('사용자 접속:', socket.client.id)
+    // 메시지를 받으면 --- (※5)
+    socket.on('chat-msg', (msg) => {
+      console.log('message:', msg)
+      // 모든 클라이언트에게 전송 --- (※6)
+      io.emit('chat-msg', msg)
+    })
+  })
+
+
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))

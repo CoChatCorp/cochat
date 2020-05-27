@@ -26,6 +26,7 @@ import ChatPage from '../../ChatPage/ChatPage'
 import Profile from '../Profile/Profile'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
+
 import Auth from '../../../../hoc/auth'
 import Axios from 'axios';
 
@@ -45,7 +46,6 @@ const useStyles = makeStyles((theme) => ({
         color: '#ffffff'
     }
 }))
-
 
 function SideBar(props) {
 

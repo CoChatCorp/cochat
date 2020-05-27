@@ -156,29 +156,6 @@ function LoginPage(props) {
               </Box>
             </Container>
             </React.Fragment>
-
-
-
-
-/*
-        <div style={{
-            display: 'flex', justifyContent: 'center', alignItems: 'center',
-            width: '400', height: '100vh'
-        }}>
-
-            <form className={classes.root} style={{ display: 'flex', flexDirection: 'column' }}
-                onSubmit={onSubmitHandler}
-            >
-                <TextField id="standard-basic" label="이메일" type="email" value={Email} onChange={onEmailHandler} />
-                <TextField id="standard-basic" label="비밀번호" type="password" value={Password} onChange={onPasswordHandler} />
-                
-                <br />
-                <Button variant="contained" type="submit" color="primary" onSubmit={onSubmitHandler}>
-                    Login
-                </Button>
-            </form>
-
-        </div>*/
     )
 }
 
