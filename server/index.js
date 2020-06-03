@@ -1,12 +1,23 @@
 const express = require('express') // express.js 모듈을 가져온 것
 const app = express()
-const port = 5000
 
 const { User } = require("./models/User")
 const { auth } = require("./middleware/auth")
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const config = require('./config/key')
+
+///
+const server = require("http").createServer(app)
+const io = require("socket.io")(server)
+///
+
+//
+const { Chat } = require("./models/Chat");
+
+app.use('/api/chat', require('./routes/chat'));
+
+//
 
 // application/x-www-form-urlencoded 라고 된 데이터를 분석해서 가져올 수 있게 한다!
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -16,7 +27,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 const mongoose = require('mongoose')
-mongoose.connect(config.mongoURI,
+const connect = mongoose.connect(config.mongoURI,
     { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false }
 ).then(() => console.log('MonogoDB Connected...'))
     .catch(err => console.log(err))
@@ -107,6 +118,97 @@ app.get('/api/users/logout', auth, (req, res) => {
         });
 });
 
+///
+
+const multer = require("multer")
+const fs = require("fs");
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/')
+  },
+  filename: function (req, file, cb) {
+    cb(null, `${Date.now()}_${file.originalname}`)
+  },
+  // fileFilter: (req, file, cb) => {
+  //   const ext = path.extname(file.originalname)
+  //   if (ext !== '.jpg' && ext !== '.png' && ext !== '.mp4') {
+  //     return cb(res.status(400).end('only jpg, png, mp4 is allowed'), false);
+  //   }
+  //   cb(null, true)
+  // }
+})
+
+var upload = multer({ storage: storage }).single("file")
+
+app.post("/api/chat/uploadfiles", auth ,(req, res) => {
+  upload(req, res, err => {
+    if(err) {
+      return res.json({ success: false, err })
+    }
+    return res.json({ success: true, url: res.req.file.path });
+  })
+});
+
+
+///
+io.on("connection",socket =>{
+
+    //emit과 같은 이름
+    socket.on("Input Chat Message", msg =>{
+  
+      connect.then(db => {
+        try {
+          // mongodb로 chat 데이터 저장
+          let chat = new Chat({ message: msg.chatMessage, sender: msg.userId, type: msg.type })
+          
+          // save 이후 에러 판단
+          chat.save((err, doc) => {
+            if(err) return res.json({success:false, err})
+  
+            Chat.find({"_id":doc._id})
+            .populate("sender")
+            .exec((err,doc)=>{
+  
+              return io.emit("Output Chat Message", doc)
+            })
+          })
+        } catch (error) {
+          console.error(error);
+  
+        }
+      })
+  
+    })
+  
+  })
+  ///
+
+///
+
+app.use('/uploads', express.static('uploads'));
+
+// Serve static assets if in production
+if (process.env.NODE_ENV === "production") {
+
+  // Set static folder   
+  // All the javascript and css files will be read and served from this folder
+  app.use(express.static("client/build"));
+
+  // index.html for all page routes    html or routing and naviagtion
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../client", "build", "index.html"));
+  });
+}
+
+const port = process.env.PORT || 5000
+
+server.listen(port, () => {
+  console.log(`Server Listening on ${port}`)
+});
+
+
+/*
 // 채팅 서버
 const server = require('http').createServer(app)
 const portNo = 3001
@@ -130,3 +232,4 @@ io.on('connection', (socket) => {
 
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
+*/

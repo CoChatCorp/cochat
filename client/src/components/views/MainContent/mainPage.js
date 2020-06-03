@@ -1,4 +1,5 @@
 import React, {Suspense} from 'react';
+import ReactDOM from 'react-dom'
 import { makeStyles } from "@material-ui/core/styles"
 import { Link as RouterLink } from 'react-router-dom';
 
@@ -15,6 +16,8 @@ import ChevronRight from '@material-ui/icons/ChevronRight';
 import HomeIcon from "@material-ui/icons/Home"
 import InfoIcon from "@material-ui/icons/Info"
 
+import DefaultPage from './DefaultPage/DefaultPage'
+
 const useStyles = makeStyles((theme) => ({
     drawerPaper : {width: 'inherit'},
     link: {textDecoration: 'none',
@@ -23,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
 function mainPage(){
     return(
+
         <div>
         <Suspense fallback={(<div>Loading...</div>)}>
             <SideBar/>

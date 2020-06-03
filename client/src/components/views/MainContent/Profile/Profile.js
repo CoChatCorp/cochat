@@ -37,7 +37,6 @@ function Profile(props) {
     channel: '가입한 채널 : 3개'
   };
   
-  
   const user = useSelector(state => state.user);
   const test = user.userData;
   var parsedList = JSON.stringify(test,["name"])

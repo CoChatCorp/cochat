@@ -22,7 +22,7 @@ function App() {
         <Route exact path="/register" component={Auth(RegisterPage, false)} />
         <Route exact path="/upload" component={Auth(PostUploadPage, true)} />
         <Route exact path="/main" component={Auth(mainPage, true)} />
-
+        <Route exact path="/chat" component={Auth(ChatPage, true)} />
       </Switch>
     </div>
   </Router>

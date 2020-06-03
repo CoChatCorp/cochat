@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-import { withRouter } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -22,6 +21,8 @@ import DirectionsIcon from '@material-ui/icons/Directions';
 import InputBase from '@material-ui/core/InputBase';
 import Divider from '@material-ui/core/Divider';
 import Fade from '@material-ui/core/Fade';
+import { withRouter } from 'react-router-dom'
+import withRoot from '../modules/withRoot';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -136,4 +137,4 @@ function PostListPage() {
     )
 }
 
-export default withRouter(PostListPage);
+export default withRouter(withRoot(PostListPage));

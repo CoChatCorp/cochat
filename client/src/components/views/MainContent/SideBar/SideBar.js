@@ -6,7 +6,7 @@ import axios from 'axios'
 
 import {
     BrowserRouter as Router,
-    Switch, Route, Link
+    Switch, Route, Link, IndexRoute
 } from "react-router-dom"
 
 import {
@@ -23,6 +23,7 @@ import withRoot from '../../modules/withRoot';
 
 import listPage from '../../PostListPage/PostListPage'
 import ChatPage from '../../ChatPage/ChatPage'
+import DefaultPage from '../DefaultPage/DefaultPage'
 import Profile from '../Profile/Profile'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
@@ -115,8 +116,9 @@ function SideBar(props) {
                 </Drawer>
 
                 <Switch>
-                    <Route exact path="/list" component={Auth(listPage, true)}></Route>
-                    <Route exact path="/chat" component={Auth(ChatPage, true)}></Route>
+                    <Route path="/main" component={Auth(DefaultPage, true)}></Route>
+                    <Route path="/list" component={Auth(listPage, true)}></Route>
+                    <Route exact path="/chat" component={ChatPage}></Route>
                     <Route exact path="/about">
                         About
                     </Route>
